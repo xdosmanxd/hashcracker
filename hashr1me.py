@@ -6,6 +6,22 @@ color1 = fg('green')
 color2 = fg('red')
 res = attr('reset')
 
+path = os.getcwd()
+
+files = []
+
+for r, d, f in os.walk(path):
+    for file in f:
+        if 'rockyou.txt' in file:
+            files.append(os.path.join(r, file))
+
+if files == []:
+	print("Rockyou doesn't exists downloading..")
+	os.system("wget https://www.scrapmaker.com/data/wordlists/dictionaries/rockyou.txt")
+else:
+	print("Rockyou already exists not downloading..")
+
+
 print("Welcome to the Hashcracker - Made by r1me")
 keuze = input("Do you want to generate or brute force a hash ? g / b : ")
 while keuze == "g" or keuze == "b" or keuze == "e":
